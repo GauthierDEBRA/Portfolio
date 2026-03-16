@@ -1,0 +1,24 @@
+# IntelliJ
+.idea/workspace.xml
+.idea/shelf/
+.idea/queries/
+.idea/dataSources/
+.idea/dataSources.local.xml
+.idea/httpRequests/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Front build
+node_modules/
+dist/
+.vite/
+.npm-cache/
+
+# Env
+.env
+.env.local
