@@ -36,8 +36,8 @@ onMounted(() => {
         <span>DEBRA</span>
       </h1>
       <p class="hero__summary">
-        Je conçois des interfaces claires côté front et des APIs robustes côté back.
-        Mon approche : livrer des applications complètes, propres et maintenables.
+        Je conçois des interfaces claires avec Vue.js et des APIs solides avec Spring Boot.
+        En recherche d'alternance pour consolider mon parcours fullstack.
       </p>
 
       <div class="tag-list hero__highlights">
@@ -58,7 +58,7 @@ onMounted(() => {
     <aside class="hero__panel card-surface">
       <div class="hero__panel-head">
         <span class="hero__panel-label">Focus 2026</span>
-        <strong>Profil fullstack confirmé</strong>
+        <strong>Mon profil fullstack</strong>
       </div>
 
       <div class="hero__panel-stack">

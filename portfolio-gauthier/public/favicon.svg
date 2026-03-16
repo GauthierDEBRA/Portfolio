@@ -1,5 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-  <rect width="120" height="120" rx="28" fill="#091018" />
-  <path d="M26 88V32H48.5C65.3447 32 76 42.1088 76 58.1676C76 74.2264 65.3447 88 48.5 88H26ZM41.1137 75.8324H47.5826C56.6711 75.8324 61.9974 69.1542 61.9974 58.1676C61.9974 47.1809 56.6711 44.1676 47.5826 44.1676H41.1137V75.8324Z" fill="#EDF4FF"/>
-  <path d="M83.2979 30L68.9473 88H84.1484L87.1562 74.3438H102.703L105.711 88H120L105.649 30H83.2979ZM90.2402 61.7109L94.9219 40.4922L99.665 61.7109H90.2402Z" fill="#5CF7C5"/>
+  <rect width="120" height="120" rx="28" fill="#0a0e14" />
+  <rect x="2" y="2" width="116" height="116" rx="26" stroke="url(#border)" stroke-width="2" fill="none"/>
+  <defs>
+    <linearGradient id="border" x1="0" y1="0" x2="120" y2="120">
+      <stop offset="0%" stop-color="#5cf7c5" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#19c2ff" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="30" y1="30" x2="100" y2="95">
+      <stop offset="0%" stop-color="#5cf7c5"/>
+      <stop offset="100%" stop-color="#19c2ff"/>
+    </linearGradient>
+  </defs>
+  <text x="60" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="48" fill="url(#accent)" letter-spacing="-3">GD</text>
 </svg>

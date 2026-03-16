@@ -39,8 +39,8 @@ onMounted(() => {
   >
     <SectionHeader
       eyebrow="À propos"
-      title="Junior, mais déjà orienté stack et livraison."
-      body="Un parcours cohérent entre formation, stages et projets personnels, construit autour d'une stack Vue.js / Java."
+      title="Fullstack orienté Vue.js & Java."
+      body="Un parcours construit autour d'une stack cohérente, validé par deux stages en entreprise et un classement major de promo."
     />
 
     <div class="about-grid">

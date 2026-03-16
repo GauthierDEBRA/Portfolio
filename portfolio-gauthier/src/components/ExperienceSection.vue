@@ -35,8 +35,8 @@ onMounted(() => {
   >
     <SectionHeader
       eyebrow="Expérience"
-      title="Des stages qui confirment la stack annoncée."
-      body="Deux stages fullstack chez Sogeti Capgemini avec Vue.js, Java et SQL en contexte agile. Une cohérence entre le discours et la pratique."
+      title="Deux stages fullstack en entreprise."
+      body="Développement d'applications web chez Sogeti Capgemini Luxembourg, avec Vue.js, Java et SQL en méthodologie agile."
     />
 
     <div class="timeline">

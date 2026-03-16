@@ -128,16 +128,16 @@ onMounted(() => {
   >
     <SectionHeader
       eyebrow="Contact"
-      title="Échangeons sur votre prochain projet."
-      body="Vous cherchez un développeur fullstack junior motivé ? N'hésitez pas à me contacter pour discuter d'une alternance ou d'une collaboration."
+      title="Parlons de votre prochain projet."
+      body="Disponible pour une alternance ou une collaboration fullstack. N'hésitez pas à me contacter."
     />
 
     <div class="contact-grid">
       <div class="contact-info card-surface">
-        <h3>Parlons d'une alternance ou d'un projet.</h3>
+        <h3>Échangeons ensemble.</h3>
         <p>
-          Si votre équipe cherche un profil junior motivé sur une stack Vue.js / Java, je suis
-          disponible pour échanger.
+          Vous recherchez un développeur fullstack Vue.js / Java pour une alternance ou un projet ?
+          Je suis disponible pour en discuter.
         </p>
 
         <div class="contact-info__list">

@@ -46,8 +46,8 @@ onMounted(() => {
   >
     <SectionHeader
       eyebrow="Projets"
-      title="Ce que je sais faire, pas juste ce que je connais."
-      body="Des projets concrets qui mélangent expérience professionnelle, initiatives personnelles et stack ciblée."
+      title="Des projets concrets, du client au perso."
+      body="Applications professionnelles, projets d'école et initiatives personnelles qui reflètent ma progression technique."
     />
 
     <div class="projects__filters">

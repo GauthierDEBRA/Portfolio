@@ -39,8 +39,8 @@ onMounted(() => {
   >
     <SectionHeader
       eyebrow="Compétences"
-      title="Vue.js et Java comme fil conducteur."
-      body="Une stack claire et ciblée, travaillée en stage et en projets personnels. Chaque compétence est appuyée par une expérience concrète."
+      title="Stack technique maîtrisée."
+      body="Des technologies travaillées en stage et en projets personnels, avec une progression mesurable sur chaque compétence."
     />
 
     <div class="skills-grid">

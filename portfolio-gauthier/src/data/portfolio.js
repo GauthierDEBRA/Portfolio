@@ -14,23 +14,23 @@ export const heroHighlights = [
 ];
 
 export const heroMetrics = [
-  { value: '2+', label: 'stages fullstack réalisés' },
+  { value: '2', label: 'stages fullstack réalisés' },
   { value: 'Java 17', label: 'Spring Boot côté back' },
-  { value: 'Vue 3', label: 'stack front maîtrisée' },
-  { value: '2026-2027', label: 'alternance recherchée' }
+  { value: 'Vue 3', label: 'stack front principale' },
+  { value: '2026', label: 'alternance recherchée' }
 ];
 
 export const aboutParagraphs = [
-  "Étudiant en Bachelor Informatique Développeur Fullstack à Metz Numeric School, je construis des interfaces propres côté front et des APIs solides côté back. Mon objectif : livrer des applications complètes et maintenables.",
-  "J'ai réalisé deux stages chez Sogeti Capgemini à Bertrange (Luxembourg), où j'ai travaillé sur des applications web pour le CTIE avec Vue.js, Java et SQL en contexte agile. C'est la stack sur laquelle je continue de progresser.",
-  "Je recherche une alternance d'un an pour 2026-2027. Basé à Coin-sur-Seille, je suis mobile sur le Grand Est et le Luxembourg. Permis B."
+  "Étudiant en Bachelor Développeur Fullstack à Metz Numeric School, je conçois des interfaces utilisateur avec Vue.js et des APIs robustes avec Java et Spring Boot. Major de promotion en première année, je m'investis pleinement dans chaque projet.",
+  "Deux stages chez Sogeti Capgemini à Bertrange (Luxembourg) m'ont permis de travailler sur des applications web en production pour le CTIE, en méthodologie agile avec Vue.js, Java et SQL.",
+  "Je recherche une alternance d'un an à partir de 2026. Basé à Coin-sur-Seille, je suis mobile sur le Grand Est et le Luxembourg. Permis B."
 ];
 
 export const aboutStats = [
   { value: '1er', label: 'major de promo' },
   { value: '11', label: 'tickets livrés en équipe' },
   { value: '7+', label: 'technologies maîtrisées' },
-  { value: '1 an', label: "d'alternance visée" }
+  { value: '1 an', label: "d'alternance recherchée" }
 ];
 
 export const skills = [
@@ -50,7 +50,7 @@ export const experiences = [
     company: 'Sogeti Capgemini',
     role: 'Développeur Fullstack — Stage',
     description:
-      "Retour au sein de la même équipe pour poursuivre le développement d'applications web pour le CTIE. Participation aux sprints agile, corrections de bugs et évolutions fonctionnelles côté front et back.",
+      "Second stage au sein de la même équipe. Développement d'applications web pour le CTIE, participation aux sprints agile, corrections de bugs et évolutions fonctionnelles côté front et back.",
     tags: ['Vue.js', 'Java', 'SQL', 'Scrum']
   },
   {
@@ -58,7 +58,7 @@ export const experiences = [
     company: 'Sogeti Capgemini',
     role: 'Développeur Fullstack — Stage',
     description:
-      "Réalisation d'un projet complet pour le CTIE avec une stack Vue.js, Java et SQL. Travail en équipe avec GitLab et suivi de tickets en méthodologie agile.",
+      "Premier stage fullstack. Réalisation d'un projet complet pour le CTIE avec Vue.js, Java et SQL. Travail en équipe avec GitLab et suivi de tickets en méthodologie agile.",
     tags: ['Vue.js', 'Java', 'SQL', 'GitLab']
   },
   {
@@ -106,7 +106,7 @@ export const projects = [
     type: 'Vue',
     context: 'Projet personnel',
     description:
-      "Application web autour du football avec actualités, statistiques et résultats. Projet utile pour travailler l'intégration front et la consommation d'API externes.",
+      "Application web autour du football avec actualités, statistiques et résultats via des APIs externes.",
     tags: ['Vue.js', 'API', 'JavaScript'],
     github: null,
     confidential: false
