@@ -64,7 +64,12 @@ onMounted(() => {
     </div>
 
     <div class="projects__grid">
-      <article v-for="project in filteredProjects" :key="project.name" class="project-card card-surface">
+      <article
+        v-for="project in filteredProjects"
+        :key="project.name"
+        class="project-card card-surface"
+        :style="{ '--project-color': project.color }"
+      >
         <div class="project-card__head">
           <div>
             <p class="project-card__type">{{ project.type }}</p>

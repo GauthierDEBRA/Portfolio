@@ -10,6 +10,10 @@ defineProps({
   stats: {
     type: Array,
     required: true
+  },
+  strengths: {
+    type: Array,
+    default: () => []
   }
 });
 
@@ -54,6 +58,16 @@ onMounted(() => {
         <article v-for="stat in stats" :key="stat.label" class="about-stat card-surface">
           <strong>{{ stat.value }}</strong>
           <span>{{ stat.label }}</span>
+        </article>
+      </div>
+    </div>
+
+    <div v-if="strengths.length" class="about-strengths">
+      <h3 class="about-strengths__title">Ce que j'apporte</h3>
+      <div class="about-strengths__grid">
+        <article v-for="item in strengths" :key="item.title" class="about-strength card-surface">
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.description }}</p>
         </article>
       </div>
     </div>

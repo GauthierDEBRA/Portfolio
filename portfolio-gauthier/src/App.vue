@@ -18,7 +18,8 @@ import {
   heroMetrics,
   navLinks,
   projects,
-  skills
+  skills,
+  strengths
 } from './data/portfolio';
 </script>
 
@@ -32,7 +33,7 @@ import {
 
     <main class="page-content">
       <HeroSection :highlights="heroHighlights" :metrics="heroMetrics" />
-      <AboutSection :paragraphs="aboutParagraphs" :stats="aboutStats" />
+      <AboutSection :paragraphs="aboutParagraphs" :stats="aboutStats" :strengths="strengths" />
       <SkillsSection :skills="skills" />
       <ExperienceSection :experiences="experiences" />
       <ProjectsSection :projects="projects" />

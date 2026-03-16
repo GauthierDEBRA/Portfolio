@@ -750,6 +750,45 @@ textarea {
   transform: translateY(-4px);
 }
 
+/* ─── Strengths (Ce que j'apporte) ─── */
+
+.about-strengths {
+  margin-top: 28px;
+}
+
+.about-strengths__title {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.about-strengths__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.about-strength {
+  padding: 22px;
+}
+
+.about-strength h4 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.about-strength p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.8;
+}
+
 /* ─── Skills ─── */
 
 .skills-grid,
@@ -802,6 +841,15 @@ textarea {
   color: var(--accent);
   font-family: var(--font-display);
   font-size: 1.15rem;
+}
+
+.skill-card__context {
+  color: var(--accent);
+  font-size: 0.68rem;
+  text-align: right;
+  line-height: 1.5;
+  max-width: 140px;
+  opacity: 0.8;
 }
 
 .skill-card__track {
@@ -944,16 +992,16 @@ textarea {
   overflow: hidden;
 }
 
-/* Accent stripe at top of project cards */
+/* Accent stripe at top of project cards — color per type */
 .project-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-strong), transparent);
-  opacity: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--project-color, var(--accent)), transparent 80%);
+  opacity: 0.6;
   transition: opacity 0.4s ease;
 }
 
@@ -1340,6 +1388,7 @@ a.contact-info__item:hover {
 
   .hero__metrics,
   .about-stats,
+  .about-strengths__grid,
   .skills-grid,
   .projects__grid,
   .education-grid {

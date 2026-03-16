@@ -40,7 +40,7 @@ onMounted(() => {
     <SectionHeader
       eyebrow="Compétences"
       title="Stack technique maîtrisée."
-      body="Des technologies travaillées en stage et en projets personnels, avec une progression mesurable sur chaque compétence."
+      body="Des technologies travaillées en stage et en projets personnels, chacune associée à un contexte d'utilisation concret."
     />
 
     <div class="skills-grid">
@@ -50,7 +50,7 @@ onMounted(() => {
             <h3>{{ skill.name }}</h3>
             <p>{{ skill.category }}</p>
           </div>
-          <strong>{{ skill.level }}%</strong>
+          <span class="skill-card__context">{{ skill.context }}</span>
         </div>
 
         <div class="skill-card__track">

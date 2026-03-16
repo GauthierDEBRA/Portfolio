@@ -34,14 +34,21 @@ export const aboutStats = [
 ];
 
 export const skills = [
-  { name: 'Vue.js', category: 'Frontend', level: 82 },
-  { name: 'JavaScript', category: 'Frontend', level: 84 },
-  { name: 'HTML / CSS', category: 'Frontend', level: 91 },
-  { name: 'Java', category: 'Backend', level: 78 },
-  { name: 'Spring Boot', category: 'Backend', level: 74 },
-  { name: 'SQL', category: 'Database', level: 79 },
-  { name: 'Git / GitLab', category: 'Workflow', level: 76 },
-  { name: 'Docker', category: 'Ops', level: 63 }
+  { name: 'Vue.js', category: 'Frontend', context: 'Utilisé en stage & projets', level: 82 },
+  { name: 'JavaScript', category: 'Frontend', context: 'Base de tous mes projets front', level: 84 },
+  { name: 'HTML / CSS', category: 'Frontend', context: 'Intégration & responsive design', level: 91 },
+  { name: 'Java', category: 'Backend', context: 'Utilisé en stage chez Sogeti', level: 78 },
+  { name: 'Spring Boot', category: 'Backend', context: 'APIs REST & sécurité', level: 74 },
+  { name: 'SQL', category: 'Database', context: 'Requêtes & modélisation en stage', level: 79 },
+  { name: 'Git / GitLab', category: 'Workflow', context: 'Branches, MR & CI/CD', level: 76 },
+  { name: 'Docker', category: 'Ops', context: 'Conteneurisation de projets', level: 63 }
+];
+
+export const strengths = [
+  { title: 'Esprit d\'équipe', description: 'Travail en sprints agile, revues de code et communication avec les métiers chez Sogeti Capgemini.' },
+  { title: 'Autonomie', description: 'Projets personnels menés de bout en bout : conception, développement, déploiement.' },
+  { title: 'Rigueur', description: 'Code propre, validations, tests et documentation. Major de promo en première année.' },
+  { title: 'Adaptabilité', description: 'Reconversion du commerce vers le développement, montée en compétences rapide sur de nouvelles technologies.' }
 ];
 
 export const experiences = [
@@ -75,6 +82,7 @@ export const projects = [
   {
     name: 'RENLA',
     type: 'Vue / Java',
+    color: '#5cf7c5',
     context: 'Projet client — CTIE (confidentiel)',
     description:
       "Back-office national de gestion de logements abordables. Travail sur les droits d'accès, les tickets de maintenance et les évolutions fonctionnelles en équipe agile.",
@@ -85,6 +93,7 @@ export const projects = [
   {
     name: 'Portfolio Fullstack',
     type: 'Vue / Spring Boot',
+    color: '#19c2ff',
     context: 'Projet personnel',
     description:
       'Portfolio avec frontend Vue 3, backend Spring Boot, formulaire de contact persisté en base de données et envoi de mails automatisé.',
@@ -94,6 +103,7 @@ export const projects = [
   {
     name: 'AlertMNS',
     type: 'Vue / Spring Boot',
+    color: '#19c2ff',
     context: 'Projet école',
     description:
       "Application de messagerie interne en temps réel avec authentification JWT, notifications WebSocket, réunions, pointage et administration.",
@@ -104,6 +114,7 @@ export const projects = [
   {
     name: 'PSG Fan App',
     type: 'Vue',
+    color: '#5cf7c5',
     context: 'Projet personnel',
     description:
       "Application web autour du football avec actualités, statistiques et résultats via des APIs externes.",
@@ -114,6 +125,7 @@ export const projects = [
   {
     name: 'Fichier Doublon',
     type: 'Python',
+    color: '#ff8f5c',
     context: 'Projet personnel',
     description:
       "Script de détection de fichiers doublons par hash pour automatiser le nettoyage de répertoires.",
@@ -124,6 +136,7 @@ export const projects = [
   {
     name: 'Democtek MVC',
     type: 'JavaScript',
+    color: '#f7df1e',
     context: 'Projet école',
     description:
       "Application web en architecture MVC avec intégration front complète, responsive design et interactions utilisateur.",
@@ -169,6 +182,11 @@ export const contactDetails = [
     label: 'GitHub',
     value: 'github.com/GauthierDEBRA',
     href: 'https://github.com/GauthierDEBRA'
+  },
+  {
+    label: 'LinkedIn',
+    value: 'Gauthier DEBRA',
+    href: 'https://www.linkedin.com/in/gauthier-debra-774a4b33b/'
   },
   {
     label: 'Localisation',
