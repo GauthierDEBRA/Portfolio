@@ -3,16 +3,22 @@ package fr.gauthierdebra.portfolio.service;
 import fr.gauthierdebra.portfolio.dto.ContactDto;
 import fr.gauthierdebra.portfolio.model.Contact;
 import fr.gauthierdebra.portfolio.repository.ContactRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -20,9 +26,11 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 public class ContactService {
 
     private static final Logger log = LoggerFactory.getLogger(ContactService.class);
+    private static final String DEFAULT_RESEND_API_URL = "https://api.resend.com/emails";
 
     private final ContactRepository contactRepository;
-    private final JavaMailSender mailSender;
+    private final ObjectMapper objectMapper;
+    private final HttpClient httpClient;
 
     @Value("${app.mail.to}")
     private String mailTo;
@@ -30,9 +38,21 @@ public class ContactService {
     @Value("${app.mail.from}")
     private String mailFrom;
 
-    public ContactService(ContactRepository contactRepository, JavaMailSender mailSender) {
+    @Value("${app.mail.resend.api-key:}")
+    private String resendApiKey;
+
+    @Value("${app.mail.resend.api-url:" + DEFAULT_RESEND_API_URL + "}")
+    private String resendApiUrl;
+
+    @Value("${app.mail.send-confirmation:false}")
+    private boolean sendConfirmationEmail;
+
+    public ContactService(ContactRepository contactRepository, ObjectMapper objectMapper) {
         this.contactRepository = contactRepository;
-        this.mailSender = mailSender;
+        this.objectMapper = objectMapper;
+        this.httpClient = HttpClient.newBuilder()
+            .connectTimeout(Duration.ofSeconds(5))
+            .build();
     }
 
     public Contact saveAndNotify(ContactDto dto) {
@@ -49,11 +69,18 @@ public class ContactService {
     }
 
     private void sendEmailsInBackground(Contact contact) {
+        if (!isResendConfigured()) {
+            log.warn("Envoi email désactivé: RESEND_API_KEY n'est pas définie.");
+            return;
+        }
+
         CompletableFuture.runAsync(() -> {
             try {
                 sendNotificationEmail(contact);
-                sendConfirmationEmail(contact);
-                log.info("Email envoyé pour le contact #{} de {}", contact.getId(), contact.getName());
+                if (sendConfirmationEmail) {
+                    sendConfirmationEmail(contact);
+                }
+                log.info("Emails traités pour le contact #{} de {}", contact.getId(), contact.getName());
             } catch (Exception e) {
                 log.error("Erreur envoi email pour contact #{}: {}", contact.getId(), e.getMessage());
             }
@@ -61,39 +88,75 @@ public class ContactService {
     }
 
     private void sendNotificationEmail(Contact contact) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(mailFrom);
-        message.setTo(mailTo);
-        message.setSubject("📩 Nouveau message portfolio - " + contact.getName());
-        message.setText(
+        sendEmail(
+            mailTo,
+            "Nouveau message portfolio - " + contact.getName(),
             "Nouveau message reçu sur ton portfolio !\n\n" +
-            "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
-            "👤 Nom       : " + contact.getName() + "\n" +
-            "✉️  Email     : " + contact.getEmail() + "\n" +
-            "🏢 Entreprise : " + (contact.getCompany() != null ? contact.getCompany() : "Non renseignée") + "\n" +
-            "📅 Date       : " + contact.getCreatedAt() + "\n" +
-            "━━━━━━━━━━━━━━━━━━━━━━━━\n\n" +
-            "💬 Message :\n" + contact.getMessage() + "\n\n" +
-            "━━━━━━━━━━━━━━━━━━━━━━━━\n" +
-            "Réponds directement à : " + contact.getEmail()
+            "Nom       : " + contact.getName() + "\n" +
+            "Email     : " + contact.getEmail() + "\n" +
+            "Entreprise : " + readableCompany(contact.getCompany()) + "\n" +
+            "Date       : " + contact.getCreatedAt() + "\n\n" +
+            "Message :\n" + contact.getMessage() + "\n\n" +
+            "Réponds directement à : " + contact.getEmail(),
+            contact.getEmail()
         );
-        mailSender.send(message);
     }
 
     private void sendConfirmationEmail(Contact contact) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(mailFrom);
-        message.setTo(contact.getEmail());
-        message.setSubject("Message bien reçu — Gauthier DEBRA");
-        message.setText(
+        sendEmail(
+            contact.getEmail(),
+            "Message bien reçu - Gauthier DEBRA",
             "Bonjour " + contact.getName() + ",\n\n" +
             "Merci pour votre message ! Je l'ai bien reçu et vous répondrai dans les plus brefs délais.\n\n" +
             "Cordialement,\n" +
             "Gauthier DEBRA\n" +
             "Développeur Fullstack\n" +
-            "gauthierdebra.vercel.app"
+            "gauthierdebra.vercel.app",
+            mailTo
         );
-        mailSender.send(message);
+    }
+
+    private void sendEmail(String to, String subject, String text, String replyTo) {
+        try {
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("from", mailFrom);
+            payload.put("to", List.of(to));
+            payload.put("subject", subject);
+            payload.put("text", text);
+
+            if (replyTo != null && !replyTo.isBlank()) {
+                payload.put("reply_to", replyTo);
+            }
+
+            HttpRequest request = HttpRequest.newBuilder(URI.create(resendApiUrl))
+                .timeout(Duration.ofSeconds(10))
+                .header("Authorization", "Bearer " + resendApiKey)
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(payload)))
+                .build();
+
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() < 200 || response.statusCode() >= 300) {
+                throw new IllegalStateException(
+                    "Resend a retourné HTTP " + response.statusCode() + " : " + response.body()
+                );
+            }
+        } catch (Exception exception) {
+            throw new IllegalStateException(exception.getMessage(), exception);
+        }
+    }
+
+    private boolean isResendConfigured() {
+        return resendApiKey != null && !resendApiKey.isBlank();
+    }
+
+    private String readableCompany(String company) {
+        if (company == null || company.isBlank()) {
+            return "Non renseignee";
+        }
+
+        return company;
     }
 
     public List<Contact> getAllContacts() {

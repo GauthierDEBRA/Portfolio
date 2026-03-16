@@ -5,7 +5,7 @@ API REST Spring Boot pour le formulaire de contact du portfolio.
 ## 🛠️ Stack
 - **Java 17** + **Spring Boot 3.2**
 - **PostgreSQL** (Railway)
-- **JavaMailSender** (Outlook SMTP)
+- **Resend Email API** (HTTP)
 - **Spring Validation**
 - **Spring Security** (Basic Auth pour les routes admin)
 
@@ -62,19 +62,21 @@ PGPASSWORD=postgres
 PGHOST=localhost
 PGPORT=5432
 PGDATABASE=portfolio
-MAIL_USERNAME=gauthier.debra@outlook.fr
-MAIL_PASSWORD=ton_mot_de_passe_application
+RESEND_API_KEY=re_xxxxxxxxx
+MAIL_FROM=Portfolio <onboarding@resend.dev>
 MAIL_TO=gauthier.debra@outlook.fr
+MAIL_SEND_CONFIRMATION=false
 CORS_ORIGINS=https://gauthierdebra.vercel.app,https://*.vercel.app,http://localhost:5173
 ADMIN_USERNAME=portfolio-admin
 ADMIN_PASSWORD=un-vrai-mot-de-passe-long
 ```
 
-### 3. Mot de passe application Outlook
-1. Va sur [account.microsoft.com/security](https://account.microsoft.com/security)
-2. → Sécurité avancée → Mots de passe d'application
-3. Génère un mot de passe pour "Portfolio Backend"
-4. Mets-le dans `MAIL_PASSWORD`
+### 3. Configuration Resend
+1. Crée un compte Resend avec l'adresse qui doit recevoir les notifications
+2. Crée une API key
+3. Mets cette clé dans `RESEND_API_KEY`
+4. Garde `MAIL_FROM=Portfolio <onboarding@resend.dev>` pour un premier test
+5. Si tu veux envoyer aussi un email de confirmation au visiteur, vérifie ton domaine dans Resend puis remplace `MAIL_FROM` par une adresse de ce domaine et passe `MAIL_SEND_CONFIRMATION=true`
 
 ### 4. Lancer en local
 ```bash
@@ -108,9 +110,10 @@ curl -X POST http://localhost:8080/api/contact \
 ### 3. Variables d'environnement Railway
 Dans Settings → Variables, ajoute :
 ```
-MAIL_USERNAME=gauthier.debra@outlook.fr
-MAIL_PASSWORD=ton_mot_de_passe_application
+RESEND_API_KEY=re_xxxxxxxxx
+MAIL_FROM=Portfolio <onboarding@resend.dev>
 MAIL_TO=gauthier.debra@outlook.fr
+MAIL_SEND_CONFIRMATION=false
 CORS_ORIGINS=https://gauthierdebra.vercel.app,https://*.vercel.app
 PGHOST=<variable Railway Postgres>
 PGPORT=<variable Railway Postgres>
@@ -120,6 +123,8 @@ PGPASSWORD=<variable Railway Postgres>
 ADMIN_USERNAME=portfolio-admin
 ADMIN_PASSWORD=un-vrai-mot-de-passe-long
 ```
+
+Avec `onboarding@resend.dev`, Resend autorise seulement l'envoi vers l'adresse email associee a ton compte. Pour envoyer a d'autres destinataires, il faut verifier ton propre domaine dans Resend.
 
 ### 4. Récupérer l'URL
 Railway → Settings → Domains → ton URL publique

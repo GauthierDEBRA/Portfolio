@@ -40,9 +40,10 @@ PGPORT=5432
 PGDATABASE=portfolio
 PGUSER=postgres
 PGPASSWORD=postgres
-MAIL_USERNAME=gauthier.debra@outlook.fr
-MAIL_PASSWORD=ton_mot_de_passe_application
+RESEND_API_KEY=re_xxxxxxxxx
+MAIL_FROM=Portfolio <onboarding@resend.dev>
 MAIL_TO=gauthier.debra@outlook.fr
+MAIL_SEND_CONFIRMATION=false
 CORS_ORIGINS=http://localhost:5173
 ADMIN_USERNAME=portfolio-admin
 ADMIN_PASSWORD=change-this-password
@@ -80,13 +81,20 @@ PGPORT=<variable Railway Postgres>
 PGDATABASE=<variable Railway Postgres>
 PGUSER=<variable Railway Postgres>
 PGPASSWORD=<variable Railway Postgres>
-MAIL_USERNAME=gauthier.debra@outlook.fr
-MAIL_PASSWORD=ton_mot_de_passe_application
+RESEND_API_KEY=re_xxxxxxxxx
+MAIL_FROM=Portfolio <onboarding@resend.dev>
 MAIL_TO=gauthier.debra@outlook.fr
+MAIL_SEND_CONFIRMATION=false
 CORS_ORIGINS=https://gauthierdebra.vercel.app,https://*.vercel.app
 ADMIN_USERNAME=portfolio-admin
 ADMIN_PASSWORD=un-mot-de-passe-long-et-solide
 ```
+
+Notes mail :
+
+- pour recevoir rapidement les notifications sur ta propre boite, le plus simple est de creer ton compte Resend avec `gauthier.debra@outlook.fr`
+- le domaine `onboarding@resend.dev` sert au test et ne peut envoyer qu'a l'adresse email associee a ton compte Resend
+- pour envoyer aussi un email de confirmation au visiteur, verifie ton propre domaine dans Resend puis remplace `MAIL_FROM` et passe `MAIL_SEND_CONFIRMATION=true`
 
 Verification rapide :
 
