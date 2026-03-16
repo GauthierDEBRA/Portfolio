@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import { sendContactMessage } from '../services/contactApi';
 import SectionHeader from './SectionHeader.vue';
 
@@ -9,6 +9,9 @@ defineProps({
     required: true
   }
 });
+
+const visible = ref(false);
+const sectionRef = ref(null);
 
 const form = reactive({
   name: '',
@@ -51,7 +54,7 @@ function validateForm() {
   if (!form.message.trim()) {
     errors.message = 'Le message est requis.';
   } else if (form.message.trim().length < 10) {
-    errors.message = 'Le message doit contenir au moins 10 caracteres.';
+    errors.message = 'Le message doit contenir au moins 10 caractères.';
   }
 
   return !errors.name && !errors.email && !errors.message;
@@ -101,22 +104,40 @@ async function handleSubmit() {
     isSubmitting.value = false;
   }
 }
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        visible.value = true;
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
+});
 </script>
 
 <template>
-  <section id="contact" class="section-shell">
+  <section
+    id="contact"
+    ref="sectionRef"
+    class="section-shell fade-in-up"
+    :class="{ 'fade-in-up--visible': visible }"
+  >
     <SectionHeader
       eyebrow="Contact"
-      title="Un portfolio utile doit aussi convertir."
-      body="Le front doit etre propre, mais le formulaire doit surtout fonctionner, valider correctement et envoyer un vrai message."
+      title="Échangeons sur votre prochain projet."
+      body="Vous cherchez un développeur fullstack junior motivé ? N'hésitez pas à me contacter pour discuter d'une alternance ou d'une collaboration."
     />
 
     <div class="contact-grid">
       <div class="contact-info card-surface">
         <h3>Parlons d'une alternance ou d'un projet.</h3>
         <p>
-          Si une equipe cherche un profil junior motive sur une stack Vue.js / Java, je suis
-          disponible pour echanger.
+          Si votre équipe cherche un profil junior motivé sur une stack Vue.js / Java, je suis
+          disponible pour échanger.
         </p>
 
         <div class="contact-info__list">
@@ -137,9 +158,9 @@ async function handleSubmit() {
 
       <div class="contact-form card-surface">
         <div v-if="isSuccess" class="contact-form__success">
-          <strong>Message envoye.</strong>
+          <strong>Message envoyé.</strong>
           <p>
-            Merci {{ submittedName }}. Ton message a bien ete transmis et je reviens vers toi
+            Merci {{ submittedName }}. Votre message a bien été transmis, je reviens vers vous
             rapidement.
           </p>
         </div>
@@ -167,7 +188,7 @@ async function handleSubmit() {
             <textarea
               v-model="form.message"
               rows="6"
-              placeholder="Decrivez votre besoin, votre contexte ou votre opportunite."
+              placeholder="Décrivez votre besoin, votre contexte ou votre opportunité."
             ></textarea>
             <small v-if="errors.message">{{ errors.message }}</small>
           </label>

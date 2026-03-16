@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref } from 'vue';
 import SectionHeader from './SectionHeader.vue';
 
 defineProps({
@@ -11,14 +12,35 @@ defineProps({
     required: true
   }
 });
+
+const visible = ref(false);
+const sectionRef = ref(null);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        visible.value = true;
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
+});
 </script>
 
 <template>
-  <section id="about" class="section-shell">
+  <section
+    id="about"
+    ref="sectionRef"
+    class="section-shell fade-in-up"
+    :class="{ 'fade-in-up--visible': visible }"
+  >
     <SectionHeader
-      eyebrow="A propos"
-      title="Un profil junior, mais deja oriente stack et livraison."
-      body="Le but du portfolio n'est pas seulement d'etre joli. Il doit montrer un cap technique coherent avec ta recherche d'alternance."
+      eyebrow="À propos"
+      title="Junior, mais déjà orienté stack et livraison."
+      body="Un parcours cohérent entre formation, stages et projets personnels, construit autour d'une stack Vue.js / Java."
     />
 
     <div class="about-grid">

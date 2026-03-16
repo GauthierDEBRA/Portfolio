@@ -10,20 +10,37 @@ defineProps({
 });
 
 const animateBars = ref(false);
+const visible = ref(false);
+const sectionRef = ref(null);
 
 onMounted(() => {
-  requestAnimationFrame(() => {
-    animateBars.value = true;
-  });
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        visible.value = true;
+        requestAnimationFrame(() => {
+          animateBars.value = true;
+        });
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
 });
 </script>
 
 <template>
-  <section id="skills" class="section-shell">
+  <section
+    id="skills"
+    ref="sectionRef"
+    class="section-shell fade-in-up"
+    :class="{ 'fade-in-up--visible': visible }"
+  >
     <SectionHeader
-      eyebrow="Stack"
+      eyebrow="Compétences"
       title="Vue.js et Java comme fil conducteur."
-      body="Le message a envoyer a un recruteur est direct : tu sais sur quelle stack tu veux monter en puissance, et tu la travailles deja."
+      body="Une stack claire et ciblée, travaillée en stage et en projets personnels. Chaque compétence est appuyée par une expérience concrète."
     />
 
     <div class="skills-grid">

@@ -1,36 +1,36 @@
 export const navLinks = [
-  { label: 'A propos', href: '#about' },
-  { label: 'Stack', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'À propos', href: '#about' },
+  { label: 'Compétences', href: '#skills' },
+  { label: 'Expérience', href: '#experience' },
   { label: 'Projets', href: '#projects' },
   { label: 'Formation', href: '#education' },
   { label: 'Contact', href: '#contact' }
 ];
 
 export const heroHighlights = [
-  'Bachelor developpement fullstack a Metz Numeric School',
-  '2 experiences chez Sogeti Capgemini Luxembourg',
-  'Vue.js au front, Java et SQL au back'
+  'Bachelor Développement Fullstack — Metz Numeric School',
+  '2 stages chez Sogeti Capgemini Luxembourg',
+  'Vue.js · Java · Spring Boot · SQL'
 ];
 
 export const heroMetrics = [
-  { value: '2+', label: 'stages fullstack' },
-  { value: 'Java 17', label: 'Spring Boot au back' },
-  { value: 'Vue 3', label: 'stack front cible' },
-  { value: '2026-2027', label: 'alternance recherchee' }
+  { value: '2+', label: 'stages fullstack réalisés' },
+  { value: 'Java 17', label: 'Spring Boot côté back' },
+  { value: 'Vue 3', label: 'stack front maîtrisée' },
+  { value: '2026-2027', label: 'alternance recherchée' }
 ];
 
 export const aboutParagraphs = [
-  "Je suis etudiant en Bachelor Informatique Developpeur Fullstack a Metz Numeric School. Mon objectif est simple : construire des interfaces propres cote front et des APIs solides cote back.",
-  "J'ai effectue deux stages chez Sogeti Capgemini a Bertrange, au Luxembourg, sur des applications web pour le CTIE avec Vue.js, Java et SQL. C'est exactement le type de stack sur lequel je veux continuer a progresser.",
-  "Je recherche une alternance d'un an pour 2026-2027. Je suis base a Coin-sur-Seille, mobile Grand Est et Luxembourg, avec permis B."
+  "Étudiant en Bachelor Informatique Développeur Fullstack à Metz Numeric School, je construis des interfaces propres côté front et des APIs solides côté back. Mon objectif : livrer des applications complètes et maintenables.",
+  "J'ai réalisé deux stages chez Sogeti Capgemini à Bertrange (Luxembourg), où j'ai travaillé sur des applications web pour le CTIE avec Vue.js, Java et SQL en contexte agile. C'est la stack sur laquelle je continue de progresser.",
+  "Je recherche une alternance d'un an pour 2026-2027. Basé à Coin-sur-Seille, je suis mobile sur le Grand Est et le Luxembourg. Permis B."
 ];
 
 export const aboutStats = [
   { value: '1er', label: 'major de promo' },
-  { value: '11', label: 'tickets livres en equipe' },
-  { value: '7+', label: 'technos travaillees' },
-  { value: '1 an', label: 'alternance visee' }
+  { value: '11', label: 'tickets livrés en équipe' },
+  { value: '7+', label: 'technologies maîtrisées' },
+  { value: '1 an', label: "d'alternance visée" }
 ];
 
 export const skills = [
@@ -46,27 +46,27 @@ export const skills = [
 
 export const experiences = [
   {
-    date: 'Mai 2026 - Juillet 2026',
+    date: 'Mai — Juillet 2026',
     company: 'Sogeti Capgemini',
-    role: 'Developpeur Fullstack stagiaire',
+    role: 'Développeur Fullstack — Stage',
     description:
-      "Travail au sein de la meme equipe qu'en 2025 sur des applications web pour le CTIE. Participation aux sprints agile, corrections de bugs et evolutions fonctionnelles cote front et back.",
+      "Retour au sein de la même équipe pour poursuivre le développement d'applications web pour le CTIE. Participation aux sprints agile, corrections de bugs et évolutions fonctionnelles côté front et back.",
     tags: ['Vue.js', 'Java', 'SQL', 'Scrum']
   },
   {
-    date: 'Mai 2025 - Juillet 2025',
+    date: 'Mai — Juillet 2025',
     company: 'Sogeti Capgemini',
-    role: 'Developpeur Fullstack stagiaire',
+    role: 'Développeur Fullstack — Stage',
     description:
-      "Realisation d'un projet complet pour le CTIE avec une stack Vue.js, Java et SQL. Travail en contexte equipe avec GitLab et suivi de tickets.",
+      "Réalisation d'un projet complet pour le CTIE avec une stack Vue.js, Java et SQL. Travail en équipe avec GitLab et suivi de tickets en méthodologie agile.",
     tags: ['Vue.js', 'Java', 'SQL', 'GitLab']
   },
   {
     date: '2024',
     company: 'Castorama',
-    role: 'Employe polyvalent',
+    role: 'Employé polyvalent',
     description:
-      "Experience terrain utile pour le sens du service, la communication et la rigueur au quotidien.",
+      "Expérience terrain qui m'a apporté le sens du service client, la rigueur et la capacité à m'organiser au quotidien.",
     tags: ['Relation client', 'Organisation']
   }
 ];
@@ -75,9 +75,9 @@ export const projects = [
   {
     name: 'RENLA',
     type: 'Vue / Java',
-    context: 'Projet client confidentiel - CTIE',
+    context: 'Projet client — CTIE (confidentiel)',
     description:
-      "Back-office national de gestion de logements abordables. Travail sur les droits, les tickets de maintenance et les evolutions fonctionnelles en equipe agile.",
+      "Back-office national de gestion de logements abordables. Travail sur les droits d'accès, les tickets de maintenance et les évolutions fonctionnelles en équipe agile.",
     tags: ['Vue.js', 'Java', 'SQL', 'Docker', 'GitLab CI/CD'],
     github: null,
     confidential: true
@@ -87,7 +87,7 @@ export const projects = [
     type: 'Vue / Spring Boot',
     context: 'Projet personnel',
     description:
-      'Portfolio avec front Vue 3, backend Spring Boot, formulaire de contact persiste en base et envoi de mail.',
+      'Portfolio avec frontend Vue 3, backend Spring Boot, formulaire de contact persisté en base de données et envoi de mails automatisé.',
     tags: ['Vue 3', 'Vite', 'Spring Boot', 'PostgreSQL'],
     github: null,
     confidential: false
@@ -97,7 +97,7 @@ export const projects = [
     type: 'Vue',
     context: 'Projet personnel',
     description:
-      "Application web orientee passion football avec actualites, statistiques et resultats. Projet utile pour travailler l'integration front et la consommation d'API.",
+      "Application web autour du football avec actualités, statistiques et résultats. Projet utile pour travailler l'intégration front et la consommation d'API externes.",
     tags: ['Vue.js', 'API', 'JavaScript'],
     github: null,
     confidential: false
@@ -107,7 +107,7 @@ export const projects = [
     type: 'Python',
     context: 'Projet personnel',
     description:
-      "Script de detection de fichiers doublons par hash pour automatiser le nettoyage de repertoires.",
+      "Script de détection de fichiers doublons par hash pour automatiser le nettoyage de répertoires.",
     tags: ['Python', 'Scripting', 'CLI'],
     github: 'https://github.com/GauthierDEBRA/fichier-doublon',
     confidential: false
@@ -115,9 +115,9 @@ export const projects = [
   {
     name: 'Democtek MVC',
     type: 'JavaScript',
-    context: 'Projet ecole',
+    context: 'Projet école',
     description:
-      "Application web en architecture MVC avec integration front complete, responsive design et interactions utilisateur.",
+      "Application web en architecture MVC avec intégration front complète, responsive design et interactions utilisateur.",
     tags: ['JavaScript', 'MVC', 'Bootstrap'],
     github: 'https://github.com/NMayerOnyx/Democtek_MVC_Projet',
     confidential: false
@@ -126,21 +126,21 @@ export const projects = [
 
 export const education = [
   {
-    period: '2024 - 2027',
-    title: 'Bachelor Informatique Developpeur Fullstack',
+    period: '2024 — 2027',
+    title: 'Bachelor Informatique Développeur Fullstack',
     school: 'Metz Numeric School',
-    badge: 'Major de promo 1re annee'
+    badge: 'Major de promo — 1re année'
   },
   {
-    period: '2021 - 2023',
-    title: 'BTS Management Commercial Operationnel',
+    period: '2021 — 2023',
+    title: 'BTS Management Commercial Opérationnel',
     school: 'NBS Metz',
     badge: 'Alternance'
   },
   {
     period: '2020',
     title: 'Bac STMG Gestion et Finance',
-    school: 'Lycee Robert Schuman - Metz',
+    school: 'Lycée Robert Schuman — Metz',
     badge: 'Obtenu'
   }
 ];
@@ -152,7 +152,7 @@ export const contactDetails = [
     href: 'mailto:gauthier.debra@outlook.fr'
   },
   {
-    label: 'Telephone',
+    label: 'Téléphone',
     value: '+33 6 14 88 18 73',
     href: 'tel:+33614881873'
   },
@@ -163,7 +163,7 @@ export const contactDetails = [
   },
   {
     label: 'Localisation',
-    value: 'Coin-sur-Seille - Grand Est / Luxembourg',
+    value: 'Coin-sur-Seille — Grand Est / Luxembourg',
     href: null
   }
 ];

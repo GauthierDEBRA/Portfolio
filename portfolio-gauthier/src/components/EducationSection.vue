@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref } from 'vue';
 import SectionHeader from './SectionHeader.vue';
 
 defineProps({
@@ -7,14 +8,35 @@ defineProps({
     required: true
   }
 });
+
+const visible = ref(false);
+const sectionRef = ref(null);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        visible.value = true;
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
+});
 </script>
 
 <template>
-  <section id="education" class="section-shell">
+  <section
+    id="education"
+    ref="sectionRef"
+    class="section-shell fade-in-up"
+    :class="{ 'fade-in-up--visible': visible }"
+  >
     <SectionHeader
       eyebrow="Formation"
-      title="Une trajectoire qui devient enfin coherente avec le developpement."
-      body="Ici, l'important est de faire ressortir la progression : orientation actuelle, classement et disponibilite pour l'alternance."
+      title="Une trajectoire qui converge vers le développement."
+      body="Du commerce au code : une réorientation assumée, validée par un classement major de promo en première année."
     />
 
     <div class="education-grid">

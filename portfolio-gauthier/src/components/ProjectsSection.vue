@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import SectionHeader from './SectionHeader.vue';
 
 const props = defineProps({
@@ -10,6 +10,8 @@ const props = defineProps({
 });
 
 const selectedType = ref('Tous');
+const visible = ref(false);
+const sectionRef = ref(null);
 
 const projectTypes = computed(() => ['Tous', ...new Set(props.projects.map((project) => project.type))]);
 
@@ -20,14 +22,32 @@ const filteredProjects = computed(() => {
 
   return props.projects.filter((project) => project.type === selectedType.value);
 });
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        visible.value = true;
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
+});
 </script>
 
 <template>
-  <section id="projects" class="section-shell">
+  <section
+    id="projects"
+    ref="sectionRef"
+    class="section-shell fade-in-up"
+    :class="{ 'fade-in-up--visible': visible }"
+  >
     <SectionHeader
       eyebrow="Projets"
-      title="Des projets qui montrent ce que tu sais faire, pas juste ce que tu connais."
-      body="Le portfolio doit melanger confidentialite projet, projets persos et stack cible. C'est plus credible qu'une simple liste de technos."
+      title="Ce que je sais faire, pas juste ce que je connais."
+      body="Des projets concrets qui mélangent expérience professionnelle, initiatives personnelles et stack ciblée."
     />
 
     <div class="projects__filters">

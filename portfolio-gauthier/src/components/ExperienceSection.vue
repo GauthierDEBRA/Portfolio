@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref } from 'vue';
 import SectionHeader from './SectionHeader.vue';
 
 defineProps({
@@ -7,14 +8,35 @@ defineProps({
     required: true
   }
 });
+
+const visible = ref(false);
+const sectionRef = ref(null);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        visible.value = true;
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
+  if (sectionRef.value) observer.observe(sectionRef.value);
+});
 </script>
 
 <template>
-  <section id="experience" class="section-shell">
+  <section
+    id="experience"
+    ref="sectionRef"
+    class="section-shell fade-in-up"
+    :class="{ 'fade-in-up--visible': visible }"
+  >
     <SectionHeader
-      eyebrow="Experience"
-      title="Des experiences qui soutiennent vraiment la stack annoncee."
-      body="Le point fort ici, c'est la coherence entre le discours, les stages et les projets exposes."
+      eyebrow="Expérience"
+      title="Des stages qui confirment la stack annoncée."
+      body="Deux stages fullstack chez Sogeti Capgemini avec Vue.js, Java et SQL en contexte agile. Une cohérence entre le discours et la pratique."
     />
 
     <div class="timeline">
