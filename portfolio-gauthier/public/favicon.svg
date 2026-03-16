@@ -1,15 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-  <rect width="120" height="120" rx="28" fill="#0a0e14" />
-  <rect x="2" y="2" width="116" height="116" rx="26" stroke="url(#border)" stroke-width="2" fill="none"/>
+  <rect width="120" height="120" rx="28" fill="#0a0e14"/>
+  <rect x="2" y="2" width="116" height="116" rx="26" stroke="url(#b)" stroke-width="2" fill="none"/>
   <defs>
-    <linearGradient id="border" x1="0" y1="0" x2="120" y2="120">
+    <linearGradient id="b" x1="0" y1="0" x2="120" y2="120">
       <stop offset="0%" stop-color="#5cf7c5" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#19c2ff" stop-opacity="0.2"/>
     </linearGradient>
-    <linearGradient id="accent" x1="30" y1="30" x2="100" y2="95">
+    <linearGradient id="a" x1="20" y1="30" x2="100" y2="90">
       <stop offset="0%" stop-color="#5cf7c5"/>
       <stop offset="100%" stop-color="#19c2ff"/>
     </linearGradient>
   </defs>
-  <text x="60" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="48" fill="url(#accent)" letter-spacing="-3">GD</text>
+  <!-- G -->
+  <path d="M18 60c0-18.8 13.2-32 31-32 12 0 21.5 5.8 26.5 15l-11.5 6.5C60.5 43 54.5 39 49 39c-12 0-19 9-19 21s7 21 19 21c7 0 12.5-3.5 15.5-8V67H50V56h26v22.5C70.5 87.5 61 92 49 92 31.2 92 18 78.8 18 60Z" fill="url(#a)"/>
+  <!-- D -->
+  <path d="M82 30h20c16.5 0 28 12 28 30s-11.5 30-28 30H82V30Zm12 11v38h8c10 0 16-7.5 16-19s-6-19-16-19h-8Z" fill="url(#a)"/>
 </svg>
