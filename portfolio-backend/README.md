@@ -57,13 +57,15 @@ cp .env.example .env
 Variables attendues par l'application :
 
 ```bash
-JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/portfolio
 PGUSER=postgres
 PGPASSWORD=postgres
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=portfolio
 MAIL_USERNAME=gauthier.debra@outlook.fr
 MAIL_PASSWORD=ton_mot_de_passe_application
 MAIL_TO=gauthier.debra@outlook.fr
-CORS_ORIGINS=https://gauthierdebra.vercel.app,http://localhost:5173
+CORS_ORIGINS=https://gauthierdebra.vercel.app,https://*.vercel.app,http://localhost:5173
 ADMIN_USERNAME=portfolio-admin
 ADMIN_PASSWORD=un-vrai-mot-de-passe-long
 ```
@@ -109,7 +111,12 @@ Dans Settings → Variables, ajoute :
 MAIL_USERNAME=gauthier.debra@outlook.fr
 MAIL_PASSWORD=ton_mot_de_passe_application
 MAIL_TO=gauthier.debra@outlook.fr
-CORS_ORIGINS=https://gauthierdebra.vercel.app
+CORS_ORIGINS=https://gauthierdebra.vercel.app,https://*.vercel.app
+PGHOST=<variable Railway Postgres>
+PGPORT=<variable Railway Postgres>
+PGDATABASE=<variable Railway Postgres>
+PGUSER=<variable Railway Postgres>
+PGPASSWORD=<variable Railway Postgres>
 ADMIN_USERNAME=portfolio-admin
 ADMIN_PASSWORD=un-vrai-mot-de-passe-long
 ```

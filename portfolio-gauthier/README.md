@@ -26,6 +26,12 @@ Copie `.env.example` vers `.env` puis adapte l'URL du backend :
 VITE_API_BASE_URL=http://localhost:8080
 ```
 
+En production sur Vercel, cette variable doit pointer vers l'URL publique Railway du backend :
+
+```bash
+VITE_API_BASE_URL=https://TON-BACKEND.up.railway.app
+```
+
 ## Scripts
 
 ```bash

@@ -5,7 +5,17 @@ function normalizeBaseUrl(baseUrl) {
 }
 
 function buildContactUrl() {
-  return `${normalizeBaseUrl(import.meta.env.VITE_API_BASE_URL)}/api/contact`;
+  const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL;
+  const isLocalHost = typeof window !== 'undefined'
+    && ['localhost', '127.0.0.1'].includes(window.location.hostname);
+
+  if (!configuredBaseUrl && !isLocalHost) {
+    throw new Error(
+      "Configuration manquante: VITE_API_BASE_URL n'est pas definie sur le frontend."
+    );
+  }
+
+  return `${normalizeBaseUrl(configuredBaseUrl)}/api/contact`;
 }
 
 export async function sendContactMessage(payload) {
