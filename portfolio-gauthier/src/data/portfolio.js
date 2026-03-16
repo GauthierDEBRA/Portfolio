@@ -89,7 +89,16 @@ export const projects = [
     description:
       'Portfolio avec frontend Vue 3, backend Spring Boot, formulaire de contact persisté en base de données et envoi de mails automatisé.',
     tags: ['Vue 3', 'Vite', 'Spring Boot', 'PostgreSQL'],
-    github: null,
+    confidential: false
+  },
+  {
+    name: 'AlertMNS',
+    type: 'Vue / Spring Boot',
+    context: 'Projet école',
+    description:
+      "Application de messagerie interne en temps réel avec authentification JWT, notifications WebSocket, réunions, pointage et administration.",
+    tags: ['Vue 3', 'Pinia', 'Spring Boot', 'MySQL', 'WebSocket', 'Docker'],
+    github: 'https://github.com/GauthierDEBRA/ALERTMNS.git',
     confidential: false
   },
   {
