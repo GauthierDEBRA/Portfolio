@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -35,7 +36,6 @@ public class ContactService {
     }
 
     public Contact saveAndNotify(ContactDto dto) {
-        // 1. Sauvegarde en BDD
         Contact contact = new Contact();
         contact.setName(dto.getName());
         contact.setEmail(dto.getEmail());
@@ -43,17 +43,21 @@ public class ContactService {
         contact.setMessage(dto.getMessage());
         Contact saved = contactRepository.save(contact);
 
-        // 2. Envoi email de notification
-        try {
-            sendNotificationEmail(saved);
-            sendConfirmationEmail(saved);
-            log.info("Email envoyé pour le contact #{} de {}", saved.getId(), saved.getName());
-        } catch (Exception e) {
-            log.error("Erreur envoi email pour contact #{}: {}", saved.getId(), e.getMessage());
-            // On ne fait pas échouer la requête si l'email plante
-        }
+        sendEmailsInBackground(saved);
 
         return saved;
+    }
+
+    private void sendEmailsInBackground(Contact contact) {
+        CompletableFuture.runAsync(() -> {
+            try {
+                sendNotificationEmail(contact);
+                sendConfirmationEmail(contact);
+                log.info("Email envoyé pour le contact #{} de {}", contact.getId(), contact.getName());
+            } catch (Exception e) {
+                log.error("Erreur envoi email pour contact #{}: {}", contact.getId(), e.getMessage());
+            }
+        });
     }
 
     private void sendNotificationEmail(Contact contact) {
