@@ -21,13 +21,13 @@ export const heroMetrics = [
 ];
 
 export const aboutParagraphs = [
-  "Étudiant en Bachelor Développeur Fullstack à Metz Numeric School, je conçois des interfaces utilisateur avec Vue.js et des APIs robustes avec Java et Spring Boot. Major de promotion en première année, je m'investis pleinement dans chaque projet.",
+  "Étudiant en Bachelor Développeur Fullstack à Metz Numeric School, je conçois des interfaces utilisateur avec Vue.js et des APIs robustes avec Java et Spring Boot. Je m'investis pleinement dans chaque projet avec une approche sérieuse et concrète.",
   "Deux stages chez Sogeti Capgemini à Bertrange (Luxembourg) m'ont permis de travailler sur des applications web en production pour le CTIE, en méthodologie agile avec Vue.js, Java et SQL.",
   "Je recherche une alternance d'un an à partir de 2026. Basé à Coin-sur-Seille, je suis mobile sur le Grand Est et le Luxembourg. Permis B."
 ];
 
 export const aboutStats = [
-  { value: '1er', label: 'major de promo' },
+  { value: '3+', label: 'projets concrets' },
   { value: '11', label: 'tickets livrés en équipe' },
   { value: '7+', label: 'technologies maîtrisées' },
   { value: '1 an', label: "d'alternance recherchée" }
@@ -47,7 +47,7 @@ export const skills = [
 export const strengths = [
   { title: 'Esprit d\'équipe', description: 'Travail en sprints agile, revues de code et communication avec les métiers chez Sogeti Capgemini.' },
   { title: 'Autonomie', description: 'Projets personnels menés de bout en bout : conception, développement, déploiement.' },
-  { title: 'Rigueur', description: 'Code propre, validations, tests et documentation. Major de promo en première année.' },
+  { title: 'Rigueur', description: 'Code propre, validations, tests et documentation. Une approche sérieuse sur chaque projet.' },
   { title: 'Adaptabilité', description: 'Reconversion du commerce vers le développement, montée en compétences rapide sur de nouvelles technologies.' }
 ];
 
@@ -151,7 +151,7 @@ export const education = [
     period: '2024 — 2027',
     title: 'Bachelor Informatique Développeur Fullstack',
     school: 'Metz Numeric School',
-    badge: 'Major de promo — 1re année'
+    badge: 'Bachelor en cours'
   },
   {
     period: '2021 — 2023',

@@ -36,7 +36,7 @@ onMounted(() => {
     <SectionHeader
       eyebrow="Formation"
       title="Du commerce au code, une reconversion réussie."
-      body="Une réorientation vers le développement fullstack, validée par un classement major de promo dès la première année."
+      body="Une réorientation vers le développement fullstack, soutenue par une progression régulière et des expériences concrètes."
     />
 
     <div class="education-grid">
